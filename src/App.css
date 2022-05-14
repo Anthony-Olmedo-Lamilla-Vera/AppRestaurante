@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;700&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+:root{
+  --azul:#162326;
+  --cremaoscura:#D9A78B;
+  --color-care:#8C7161;
+  --crema-claro:#F2D0BD;
+  --negro : #0D0D0D;
+  --blanco : #ffff
+}
+html{
+  font-size: 16px;
+  background-color:var(--azul);
+
+}
+header {
+  height: 40vh;
+  text-align: center;
+}
+header img{
+height: 100%;
+  object-fit: cover;
+}
+.contain-main h2{
+  color:var(--crema-claro) ;
+  text-align: center;
+  font-size: 2.5rem;
+}
+.nav-filtros {
+  margin: 1.5625rem 0;
+}
+.nav-filtros span {
+  color: var(--blanco);
+}
+.nav-filtros ul{
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  flex-wrap: wrap;
+  justify-content: start;
+  flex-grow: inherit;
+}
+.contain-main h3{
+  font-weight: 400;
+  color: var(--crema-claro);
+}
+.nav-filtros ul li {
+  list-style: none;
+  cursor: pointer;
+  color: var(--cremaoscura);
+  border: 1px solid var(--color-care);
+  border-radius:0.75rem ;
+  padding:0.5rem ;
+  margin-right: 0.75rem;
+  margin-top: 0.75rem;
+  
+}
+.nav-filtros ul li:hover{
+  transition: .5s;
+  transition-delay: .1s;
+  background-color:var(--negro) ;
+}
+.catalogo-productos {
+  display: grid;
+  margin-bottom: 70px;
+  grid-template-columns: repeat(auto-fit,minmax(185px,1fr));
+  gap:0.625rem;
+  justify-content: center;
+}
+.card-producto{
+  overflow: hidden;
+  position: relative;
+  background-color:#0d0d0d60 ;
+  border: 1px solid var(--negro);
+  backdrop-filter: blur(10px);
+  border-radius:8px ;
+}
+.card-producto img{
+  width: 100%;
+
+  object-fit: cover;
+}
+.card-producto h1{
+  height: max-content;
+  color: var(--cremaoscura);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.75rem 0;
+  font-size: 0.9375rem;
+  text-rendering: optimizeSpeed;
+}
+.card-producto ul {
+  padding: 0.5rem 0.625rem ;
+  color: #F2D0BD;
+  font-weight: 300;
+  margin-bottom: 2.1875rem;
+}
+.card-producto ul li {
+  list-style: none;
+}
+.card-producto button{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin-top: 1.125rem ;
+  padding: 0.5rem 0;
+  background-color: var(--crema-claro);
+  color: var(--negro);
+  font-weight: bold;
+  border-style: none;
+  cursor: pointer;
+  font-size: 1rem;
+
+}
+.card-producto button:hover{
+  background-color: var(--negro);
+  color: var(--crema-claro);
+}
+footer {
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--negro);
+  width: 100%;
+  font-size: 1.125rem;
+}
+footer:hover{
+  background-color: var(--color-care);
+
+}
+.nav-pedidos ul {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+align-items: center;
+}
+.nav-pedidos ul li {
+  list-style: none;
+  color: var(--crema-claro);
+}
+.nav-pedidos ul li svg{
+  font-size: 1.875rem;
+}
+/*Modal Pedido*/
+.modal-pedido {
+  position: fixed;
+align-content: center;
+  min-height: 100vh;
+  width: 100%;
+  top: 0;
+  transform: translateY(100%);
+  transition: transform 1s;
+  display: flex;
+  justify-content: center;
+  background-color: #16232669;
+  backdrop-filter: blur(20px);
+  overflow-y: scroll;
+
+
+}
+
+.open-modal{
+transform: translateY(0%);
+transition: transform  .8s;
+}
+.button-cerrar-modal {
+  width: 100%;
+  text-align: center;
+}
+.cont-modal button{
+  font-weight: 400;
+  margin-top: 1.875rem;
+  background-color: var(--negro);
+  color: var(--cremaoscura);
+  padding: 0.75rem 2.5rem;
+border-radius: 0.3125rem;
+cursor: pointer;
+}
+.cont-modal {
+  position: absolute;
+}
+.modal-pedido h4{
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 500;
+  color: var(--cremaoscura);
+  padding: 0.625rem 0;
+
+}
+.item-pedido {
+  position: relative;
+  margin-bottom: 10px;
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  max-width: 43.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  
+}
+.item-pedido img{
+  width: 70%;
+  object-fit: cover;
+}
+.text-pedido{
+  padding: 0.75rem;
+  background-color: var(--negro);
+
+}
+.text-pedido h1{
+  color: var(--crema-claro);
+}
+.text-pedido  p{
+  color: var(--crema-claro);
+  margin-bottom: 0.75rem;
+}
+.text-pedido ul {
+  height: max-content;
+  padding: 0.625rem 0;
+}
+.text-pedido ul li {
+  font-weight: 600;
+  list-style: none;
+  color: var(--color-care);
+}
+.text-pedido select {
+  padding: 0.625rem 0;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  align-items: flex-end;
+  align-content: flex-end;
+  background-color: var(--cremaoscura);
+  text-align: center;
+outline: none;
+
+}
+.confirm-pedido {
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  color: var(--blanco);
+
+}
+.img-pedido{
+  justify-content: center;
+  text-align: center;
+}
+.confirm-pedido button{
+  width: 100%;
+  background-color: var(--negro);
+  border-style: none;
+ color: var(--crema-claro);
+  padding: 15px 0;
+  transition: .5s;
+  font-size: 17px;
+  cursor: pointer;
+  transition-delay: .2s;
+}
+.confirm-pedido button:hover{
+  transition-delay: 0s;
+  background-color: var(--color-care);
+}
+
+/*ROot*/
+.cont-main-root h1{
+  text-align: center;
+  padding: 1.25rem 0;
+  color: var(--crema-claro);
+}
+.cont-main-root nav{
+  display: flex;
+  margin: 1.25rem 0;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.cont-main-root nav span{
+  color: var(--blanco);
+}
+.cont-main-root button {
+  margin: 0.75rem 0;
+  cursor: pointer;
+  padding: 0.75rem 1.875rem;
+  color: var(--blanco);
+  background-color: var(--negro);
+  border-style: none;
+  font-size: 1rem;
+  border-radius: 0.3125rem;
+}
+.cont-main-root table {
+  width: 100%;
+  border-radius: 0.625rem;
+  border-collapse:collapse ;
+  border: 1px solid var(--crema-claro);
+}
+.cont-main-root table thead{
+  background-color: var(--negro);
+  color: var(--cremaoscura);
+}
+.cont-main-root table tbody{
+  color: var(--blanco);
+}
+.cont-main-root table tbody tr{
+  cursor: pointer;
+}
+.cont-main-root table tbody tr:hover{
+  background-color: var(--color-care);
+}
+.cont-main-root table td{
+  border: 1px solid var(--crema-claro);
+  padding: 0.3125rem;
+  text-align: center;
+  
+}
+.icon-cerrarPedido {
+  position: fixed;
+  cursor: pointer;
+  right: 0.9375rem;
+  top: 0.9375rem;
+}
+.icon-cerrarPedido svg {
+  color: red;
+}
+.confirm-pedido button{
+  background-color: green;
+}
