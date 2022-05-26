@@ -1,29 +1,36 @@
-import { useState } from "react";
-import logo from "./logo.svg";
-import { AiOutlineArrowUp } from "react-icons/ai";
 import "./App.css";
-import CardItem from "./Components/CardItem";
-import Footer from "./Components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import IndexHome from "./Pages/Home/indesHome";
-import IndexRoot from "./Pages/Roote/IndexRoot";
-
+import IndexPedido from "./Pages/Pedidos/IndexPedidos";
+import IndexAdmin from "./Pages/Admin/IndexAdmin";
+import IndexReserva from "./Pages/Admin/Routes/IndexReserva";
+import IndexCliente from "./Pages/Admin/Routes/IndexCliente";
+import { Provider } from "react-redux";
+import { StorePedidos } from "./Redux/ConfigStore";
+import Inicio from "./Pages/Home/Inicio";
 function App() {
   return (
-    <div className="contain-main">
-      <header>
-        <img
-          src="https://res.cloudinary.com/dvrsowzhf/image/upload/v1652471530/Logotipo_Restaurante_Crema-removebg-preview_o8dwsn.png"
-          alt=""
-        />
-      </header>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<IndexHome />} />
-          <Route path="/root" element={<IndexRoot />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Provider store={StorePedidos}>
+      <div className="contain-main">
+        <header>
+          <img
+            src="https://res.cloudinary.com/dvrsowzhf/image/upload/v1652471530/Logotipo_Restaurante_Crema-removebg-preview_o8dwsn.png"
+            alt=""
+          />
+        </header>
+        <BrowserRouter>
+          <Routes>
+            <Route index path="/" element={<Inicio />} />
+            <Route path="/user/:id/mesa/:mesa" element={<IndexHome />} />
+            <Route path="/admin/*" element={<IndexAdmin />}>
+              <Route path="reserva/" element={<IndexReserva />} />
+              <Route path="pedido" element={<IndexPedido />} />
+              <Route path="cliente" element={<IndexCliente />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </Provider>
   );
 }
 

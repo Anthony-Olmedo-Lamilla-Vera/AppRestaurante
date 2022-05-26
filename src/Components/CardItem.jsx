@@ -1,23 +1,26 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { AddItem } from "../Redux/ConfigStore";
 
-function CardItem() {
+function CardItem({ nombre, precio, id, img, cantidad, items = [] }) {
+  const dispatch = useDispatch();
+  function addItem() {
+    const data = { nombre, precio, id, cantidad, img, items };
+    dispatch(AddItem(data));
+  }
   return (
     <article className="card-producto">
-      <img
-        src="https://www.infobae.com/new-resizer/xHORBTTOvi76_TX7OOanBUblR-0=/1200x900/filters:format(webp):quality(85)//arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg"
-        alt=""
-      />
-      <h1>Lorem ipsum</h1>
-      <ul>
-        <li>ñsñasd</li>
-        <li>ñsñasd</li>
-        <li>ñsñasd</li>
-        <li>ñsñasd</li>
-        <li>ñsñasd</li>
-        <li>ñsñasd</li>
-      </ul>
-      <button>
-        <span>$15 </span>
+      <img src={img} alt="" />
+      <h1>{nombre}</h1>
+      {items.length > 0 && (
+        <ul>
+          {items.map((it) => {
+            it.nombre;
+          })}
+        </ul>
+      )}
+      <button onClick={addItem}>
+        <span>$ {precio} </span>
         <span>Pedir</span>
       </button>
     </article>

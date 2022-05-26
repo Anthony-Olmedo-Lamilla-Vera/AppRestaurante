@@ -83,8 +83,9 @@ height: 100%;
 }
 .card-producto img{
   width: 100%;
+  height: 60%;
 
-  object-fit: cover;
+  object-fit: contain;
 }
 .card-producto h1{
   height: max-content;
@@ -94,7 +95,7 @@ height: 100%;
   text-overflow: ellipsis;
   padding: 0.75rem 0;
   font-size: 0.9375rem;
-  text-rendering: optimizeSpeed;
+
 }
 .card-producto ul {
   padding: 0.5rem 0.625rem ;
@@ -270,6 +271,9 @@ outline: none;
 }
 
 /*ROot*/
+.cont-main-root{
+  min-height: 100vh;
+}
 .cont-main-root h1{
   text-align: center;
   padding: 1.25rem 0;
@@ -326,10 +330,119 @@ outline: none;
   cursor: pointer;
   right: 0.9375rem;
   top: 0.9375rem;
+  z-index: 999999;
 }
 .icon-cerrarPedido svg {
   color: red;
 }
 .confirm-pedido button{
   background-color: green;
+}
+
+/*FORM RESERVAS*/
+.form-reserva {
+  display: flex;
+  gap: 1.125rem 0;
+  flex-direction: column;
+}
+.input-form{
+  display: flex;
+  gap: 0.625rem;
+  flex-direction: column;
+}
+.input-form label{
+  color: var(--blanco);
+}
+.input-form input{
+  padding:0.75rem 0.5rem;
+  outline: none;
+  border-radius: 0.3125rem;
+}
+.input-form p{
+  color: #fff;
+}
+.input-form select{
+padding:0.75rem 0.5rem;
+border-radius: 0.3125rem;
+
+outline: none;
+  
+}
+.search-reservas {
+  width: 100%;
+  text-align: center;
+
+
+}
+.search-reservas form{
+width: 80%;
+margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.search-reservas label{
+  color: var(--blanco);
+  font-weight: bold;
+}
+.search-reservas input {
+  margin: 0.3125rem 0;
+  padding: 0.625rem 0.3125rem;
+  border-radius:0.3125rem ;
+  outline: none;
+  border-style: none;
+}
+.cont-main-root {
+  overflow-x: scroll;
+}
+ .table-reservas{
+   overflow: hidden;
+  overflow-x: scroll;
+}
+.cont-form-product {
+  width: 80%;
+  margin:1.25rem  auto;
+
+}
+.cont-form-product h3 {
+  padding: 1.25rem 0;
+}
+.grid-col {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 0.9375rem;
+  overflow: hidden;
+}
+.panel-products {
+  background-color: var(--blanco);
+  height: 90%;
+}
+.item-panel-products {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+.Cliente-msg  {
+  color: var(--blanco);
+  font-size: 1.25rem;
+  text-align: center;
+}
+.div-noclient {
+  text-align: center;
+}
+.search-reservas h1 {
+  font-size: 1.875rem;
+  margin: 0.9375rem 0;
+  color: var(--blanco);
+}
+.btn-salir {
+  background-color: red;
+  border-style: none;
+  padding: 8px 40px;
+  color: var(--crema-claro);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 2px;
+
 }

@@ -1,13 +1,58 @@
 import React from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import useSWR from "swr";
 import CardItem from "../../Components/CardItem";
 import Footer from "../../Components/Footer";
+import { Fetcher, Rutas } from "../../Rutas";
+import useInputHooks from "../Admin/Routes/Hooks/useInputHooks";
+import ProductosTodo from "./Components/ProductosTodo";
 
 function IndexHome() {
+  const Params = useParams();
+  const navigate = useNavigate();
+  const InputSearch = useInputHooks();
+
+  console.log(Params);
+  const { data, error } = useSWR(Rutas.CLIENTE_ID + Params.id, Fetcher);
+  if (!data) {
+    return <p>Cargando ...</p>;
+  }
+  function SearchKeyword(e) {
+    e.preventDefault();
+    console.log("hgol");
+    navigate(`/user/${InputSearch.Value}/mesa/5`);
+  }
+  console.log(data);
+  if (error) {
+    return <p>Error ...</p>;
+  }
+  if (data.data === null) {
+    return (
+      <div className="div-noclient">
+        <p className="Cliente-msg">No existe este Usuario</p>
+        <div className="search-reservas">
+          <form onSubmit={SearchKeyword}>
+            <label htmlFor="">Ingrese una Cedula de Usuario</label>
+            <input
+              value={InputSearch.Value}
+              onChange={InputSearch.ChangeValue}
+              type="number"
+              placeholder="Digite numero de cedula ..."
+            />
+          </form>
+        </div>
+      </div>
+    );
+  }
   return (
     <React.Fragment>
+      <button className="btn-salir" onClick={() => navigate("/")}>
+        Salir
+      </button>
       <h2>Bienvenidos </h2>
 
-      <h3>Nº Mesa 15</h3>
+      <p className="Cliente-msg">{data.data.Nombre}</p>
+      <h3>Nº Mesa {Params.mesa}</h3>
       <div className="nav-filtros">
         <span>Filtrar por tipo</span>
         <ul>
@@ -18,16 +63,7 @@ function IndexHome() {
           <li>Licores</li>
         </ul>
       </div>
-
-      <section className="catalogo-productos">
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-      </section>
+      <ProductosTodo />
       <Footer />
     </React.Fragment>
   );

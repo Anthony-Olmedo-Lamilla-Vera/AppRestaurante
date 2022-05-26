@@ -1,19 +1,44 @@
+import axios from "axios";
 import React from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import { VscError } from "react-icons/vsc";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useSubtotal } from "../Pages/Admin/Routes/Hooks/useSubtotal";
+import { Rutas } from "../Rutas";
 import ItemPedido from "./ItemPedido";
 
 function Footer() {
+  const Data = useSelector((data) => data.Pedido);
+  const params = useParams();
+  const { Total, numcart } = useSubtotal();
+  console.log(Data);
   function openMOdal() {
     console.log("open");
     const modal = document.querySelector(".modal-pedido");
     modal.classList.toggle("open-modal");
     console.log(modal);
   }
-  function closeModal() {
-    const modal = document.querySelector(".modal-pedido");
-    modal.classList.toggle("open-modal");
-    console.log(modal);
+  async function ConfirmCompra(e) {
+    e.preventDefault();
+    await axios
+      .post(Rutas.POST_PEDIDOS, {
+        Total: Total,
+        Cantidad: numcart,
+        Productos: Data,
+        ID_Cliente: params.id,
+        Mesa: params.mesa,
+      })
+      .then((data) => {
+        console.log("Pedido sastifactorio");
+        const modal = document.querySelector(".modal-pedido");
+        modal.classList.toggle("open-modal");
+        console.log(modal);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
   }
   return (
     <React.Fragment>
@@ -21,10 +46,10 @@ function Footer() {
         <nav className="nav-pedidos">
           <ul>
             <li>
-              Total Pedido : <span>5 item</span>
+              Total Pedido : <span>{numcart} item</span>
             </li>
             <li>
-              <span>$30</span>
+              <span>$ {Total}</span>
             </li>
             <li>
               <AiOutlineArrowUp />
@@ -36,18 +61,27 @@ function Footer() {
       <section className="modal-pedido">
         <div className="cont-modal">
           <div className="button-cerrar-modal">
-            <button onClick={closeModal}>Seguir Comprando</button>
+            <button onClick={openMOdal}>Seguir Comprando</button>
           </div>
           <h4>Detalle Pedido </h4>
           <div className="cont-item-pedidos">
-            <ItemPedido />
-            <ItemPedido />
-            <ItemPedido />
-            <ItemPedido />
+            {Data.map((item, key) => {
+              return (
+                <ItemPedido
+                  key={key}
+                  id={item.id}
+                  img={item.img}
+                  Nombre={item.nombre}
+                  Precio={item.precio}
+                  Cantidad={item.cantidad}
+                  items={item.items}
+                />
+              );
+            })}
           </div>
           <div className="cont-total-pedido"></div>
           <div className="confirm-pedido">
-            <button onClick={closeModal}>Confirmar Pedido $15 </button>
+            <button onClick={ConfirmCompra}>Confirmar Pedido $15 </button>
           </div>
         </div>
       </section>
