@@ -6,12 +6,13 @@ import TABLA_PEDIDOS from "./Component/TABLA_PEDIDOS";
 
 function IndexPedido() {
   const [FormProduc, setFormProduc] = useState(false);
+  const [TotalPedidos, setTotalPedidos] = useState(0);
   const navigate = useNavigate();
   return (
     <main className="cont-main-root">
       <h1>Pedidos Pendientes</h1>
       <nav>
-        <span>Total Pedidos : 17</span>
+        <span>Total Pedidos : {TotalPedidos}</span>
         <button
           onClick={() =>
             FormProduc ? setFormProduc(false) : setFormProduc(true)
@@ -22,7 +23,7 @@ function IndexPedido() {
       </nav>
       {FormProduc && <FormProduct />}
 
-      <TABLA_PEDIDOS />
+      <TABLA_PEDIDOS setpedidos={setTotalPedidos} />
     </main>
   );
 }

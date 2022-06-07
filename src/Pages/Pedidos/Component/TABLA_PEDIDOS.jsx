@@ -4,7 +4,7 @@ import { Fetcher, Rutas } from "../../../Rutas";
 import ItemsPedidosBody from "./ItemsPedidosBody";
 
 import ModalPedidRoot from "./ModalPedidRoot";
-function TABLA_PEDIDOS() {
+function TABLA_PEDIDOS({ setpedidos }) {
   const { data, error } = useSWR(Rutas.GET_PEDIDOS, Fetcher);
   console.log(Rutas.GET_PEDIDOS);
 
@@ -17,6 +17,8 @@ function TABLA_PEDIDOS() {
   if (error) {
     return <p colSpan={4}>Error ...</p>;
   }
+  setpedidos(data.data.length);
+
   return (
     <>
       <table>

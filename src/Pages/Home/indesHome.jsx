@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useSWR from "swr";
 import CardItem from "../../Components/CardItem";
 import Footer from "../../Components/Footer";
+import Loading from "../../Components/Loading";
 import { Fetcher, Rutas } from "../../Rutas";
 import useInputHooks from "../Admin/Routes/Hooks/useInputHooks";
 import ProductosTodo from "./Components/ProductosTodo";
@@ -15,11 +16,11 @@ function IndexHome() {
   console.log(Params);
   const { data, error } = useSWR(Rutas.CLIENTE_ID + Params.id, Fetcher);
   if (!data) {
-    return <p>Cargando ...</p>;
+    return <Loading />;
   }
   function SearchKeyword(e) {
     e.preventDefault();
-    console.log("hgol");
+
     navigate(`/user/${InputSearch.Value}/mesa/5`);
   }
   console.log(data);

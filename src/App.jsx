@@ -14,7 +14,7 @@ function App() {
       <div className="contain-main">
         <header>
           <img
-            src="https://res.cloudinary.com/dvrsowzhf/image/upload/v1652471530/Logotipo_Restaurante_Crema-removebg-preview_o8dwsn.png"
+            src="https://res.cloudinary.com/dvrsowzhf/image/upload/v1654564020/Logotipo_Restaurante_Crema-removebg-preview_miyt75.png"
             alt=""
           />
         </header>

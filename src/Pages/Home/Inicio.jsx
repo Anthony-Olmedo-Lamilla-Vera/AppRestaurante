@@ -7,7 +7,7 @@ function Inicio() {
   const InputSearch = useInputHooks();
   function SearchKeyword(e) {
     e.preventDefault();
-    console.log("hgol");
+
     navigate(`/user/${InputSearch.Value}/mesa/5`);
   }
   return (
@@ -16,6 +16,8 @@ function Inicio() {
       <form onSubmit={SearchKeyword}>
         <label htmlFor="">Ingrese una Cedula de Usuario</label>
         <input
+          autoFocus
+          onFocus={true}
           value={InputSearch.Value}
           onChange={InputSearch.ChangeValue}
           type="number"

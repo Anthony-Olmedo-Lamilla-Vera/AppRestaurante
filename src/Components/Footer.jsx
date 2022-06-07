@@ -81,7 +81,7 @@ function Footer() {
           </div>
           <div className="cont-total-pedido"></div>
           <div className="confirm-pedido">
-            <button onClick={ConfirmCompra}>Confirmar Pedido $15 </button>
+            <button onClick={ConfirmCompra}>Confirmar Pedido ${Total} </button>
           </div>
         </div>
       </section>
